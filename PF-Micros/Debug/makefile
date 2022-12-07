@@ -60,8 +60,8 @@ all: main-build
 main-build: PF-Micros.elf secondary-outputs
 
 # Tool invocations
-PF-Micros.elf PF-Micros.map: $(OBJS) $(USER_OBJS) C:\Users\ermes\STM32CubeIDE\workspace_1.10.1\PF-Micros\STM32F070F6PX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "PF-Micros.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\ermes\STM32CubeIDE\workspace_1.10.1\PF-Micros\STM32F070F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PF-Micros.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+PF-Micros.elf PF-Micros.map: $(OBJS) $(USER_OBJS) C:\Users\ermes\git\Analisador-de-fluxos\PF-Micros\STM32F070F6PX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "PF-Micros.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\ermes\git\Analisador-de-fluxos\PF-Micros\STM32F070F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PF-Micros.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
