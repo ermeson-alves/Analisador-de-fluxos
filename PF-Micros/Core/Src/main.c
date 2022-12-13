@@ -64,16 +64,20 @@ static void MX_USART2_UART_Init(void);
 
 /* USER CODE END PFP */
 
+
+
+
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	char message[146];
+	char message[144];
 
 	int len = sprintf(message,"\r\nNos ultimos 10s:\r\nNumero de pessoas atualmente dentro do ambiente = %d\r\nNumero de pessoas que entraram = %d\r\nNumero de pessoas que sairam = %d\r\n"
-			"", numero_atual, numero_entraram, numero_sairam);
+			, numero_atual, numero_entraram, numero_sairam);
 
 	HAL_UART_Transmit(&huart2,(uint8_t *) message,sizeof(message),100);// Sending in normal mode
+
 
 	numero_entraram = 0;
 	numero_sairam = 0;
@@ -124,6 +128,7 @@ int main(void)
     	  HAL_Delay(1000);
       }
 
+      /* SAIDA DE PESSOAS */
       if(!HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1)) {
           numero_sairam++;
           numero_atual--;
